@@ -1,0 +1,343 @@
+//////////////////////////////////////////////
+kako da napravim da je bambu lab logo pokraj navigacije i da je navigacija centrirana
+
+30. svi
+Trebaš promijeniti nav u flexbox i poravnati logo s linkovima u isti red:
+
+CSS promjene:
+
+css
+nav {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+nav img {
+    width: auto;
+    height: 36px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    display: flex;
+    gap: 4px;
+}
+Ključne promjene:
+
+nav dobiva width: 100% i justify-content: center — cijeli nav je centriran
+display: flex + align-items: center na nav stavlja logo i ul u isti red
+nav img mijenjamo na fiksnu height umjesto width: 10% — logo će biti konzistentne visine bez obzira na ekran
+HTML ne trebaš mijenjati, struktura je već dobra (<img> ispred <ul> unutar <nav>).
+//////////////////////////////////////////////
+
+
+//////////////////////////////////////////////
+kako da dodam neki blur ispod navigacije
+
+31. svi
+Dodaj backdrop-filter i laganu pozadinu na nav:
+
+css
+nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+backdrop-filter: blur(10px) blurira sve iza navigacije, a rgba pozadina s providnošću daje efekt kao na modernim stranicama. Povećaj 10px za jači blur.
+//////////////////////////////////////////////
+
+
+//////////////////////////////////////////////
+kako da razdvojim tekst u navigaciji
+
+31. svi
+Dodaj gap između loga i linkova u navigaciji.
+//////////////////////////////////////////////
+
+
+//////////////////////////////////////////////
+kako da dodam iknoicu pokraj title
+
+U <head> dodaj <link> za favicon:
+html<head>
+    <meta charset="UTF-8" />
+    <title>Proizvodi</title>
+    <link rel="icon" type="image/png" href="slike/bambulab-logo.png">
+    <link rel="stylesheet" href="stil.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+Koristi istu sliku logoa koju već imaš, ili stavi drugu ako imaš .ico ili .png datoteku.
+//////////////////////////////////////////////
+
+
+//////////////////////////////////////////////
+kako funkcionira grid kod html i css
+
+CSS Grid – kako funkcionira
+CSS Grid je dvodimenzionalni sustav rasporeda koji ti omogućuje postavljanje elemenata u retke i stupce istovremeno.
+
+Osnova
+Grid aktiviraš na roditeljskom elementu (container), a svi direktni potomci postaju grid stavke.
+
+css
+.container {
+  display: grid;
+}
+Definiranje stupaca i redaka
+css
+.container {
+  display: grid;
+  grid-template-columns: 200px 200px 200px; /* 3 stupca po 200px */
+  grid-template-rows: 100px 100px;          /* 2 retka po 100px */
+}
+Korisne jedinice i funkcije:
+
+css
+grid-template-columns: 1fr 2fr 1fr;        /* fr = frakcija slobodnog prostora */
+grid-template-columns: repeat(3, 1fr);     /* ponovi 3 puta */
+grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* responzivno */
+Razmak između ćelija
+css
+.container {
+  gap: 16px;          /* jednaki razmak svuda */
+  column-gap: 20px;   /* samo između stupaca */
+  row-gap: 10px;      /* samo između redaka */
+}
+Pozicioniranje stavki
+Svaka stavka može zauzeti više ćelija:
+
+css
+.item {
+  grid-column: 1 / 3;   /* od linije 1 do linije 3 (= 2 stupca) */
+  grid-row: 1 / 2;      /* prvi redak */
+}
+
+/* Skraćeni zapis */
+.item {
+  grid-column: span 2;  /* proteže se kroz 2 stupca */
+}
+Grid područja (Areas)
+Vizualno definiranje rasporeda:
+
+css
+.container {
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+}
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }
+Poravnanje
+css
+.container {
+  justify-items: center;   /* horizontalno poravnanje stavki */
+  align-items: center;     /* vertikalno poravnanje stavki */
+}
+
+.item {
+  justify-self: end;       /* poravnanje jedne stavke horizontalno */
+  align-self: start;       /* poravnanje jedne stavke vertikalno */
+}
+Vizualni primjer
+Evo interaktivni demo:
+
+
+
+Grid vs Flexbox
+Grid je idealan kada trebaš dvodimenzionalni raspored (retci + stupci). Flexbox je bolji za jednodimenzionalni (samo red ili samo stupac).
+
+Kratko pravilo: Flexbox za komponente, Grid za layout stranice.
+//////////////////////////////////////////////
+
+
+//////////////////////////////////////////////
+uredi obrazac minimalisticki tako da odgovara stilu bambu laba
+
+Dat ću ti novi CSS za obrazac koji odgovara Bambu Lab stilu — čist, moderan, zeleni akcenti.
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0.25s;
+    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+VvisualizeVvisualize show_widgetEvo promjena koje sam napravio u CSS-u za tvoj stil3.css:
+Dodaj ovo za obrazac — zamijeni stari stil forme:
+cssmain {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 1rem 3rem;
+}
+
+form {
+    width: 100%;
+    max-width: 480px;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+legend {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary, #888);
+    text-transform: uppercase;
+    margin: 1.5rem 0 1rem;
+}
+
+form label {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form input[type="number"],
+form select {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: inherit;
+    border: 0.5px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #1DB954;
+    box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.12);
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 44px;
+    margin-top: 1rem;
+    background: #1DB954;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: #17a348;
+}
+Zelena #1DB954 odgovara Bambu Lab brandingu, a radio gumbi za dostavljača i plaćanje mogu se dodatno stilizirati slično kao u pregledu gore.
+//////////////////////////////////////////////
+
+
+//////////////////////////////////////////////
+napravi da su slike u article-u, pozadinske u da su preko cijele jedne kucice i da su jedna ispod druge
+
+Da bi slike u article bile pozadinske, preko cijele “kocke” i da su artikli složeni jedan ispod drugog, trebaš promijeniti strukturu CSS-a i maknuti <img> iz HTML-a (ili ga sakriti).
+
+Najčišće rješenje je: article dobiva background-image, a sadržaj ide preko njega.
+
+1. HTML (izmjena – ukloni <img> ili ga ostavi samo kao fallback)
+
+Primjer (preporučeno ukloniti img):
+
+<article style="background-image: url('slike/proizvodi/bambulab-a1mini.png');">
+    <h1>Bambu Lab A1 mini</h1>
+    <p>Jednostavno, najbolji</p>
+    <a href="proizvodi.html"></a>
+</article>
+
+<article style="background-image: url('slike/bambulab-filament.png');">
+    <h1>Bambu Lab Filament</h1>
+    <p>Velik odabir boja i dodataka</p>
+    <a href="filament.html"></a>
+</article>
+
+<article style="background-image: url('slike/bambulab-software.png');">
+    <h1>Bambu Studio</h1>
+    <p>Jednostavni i pun opcija</p>
+    <a href="softver.html"></a>
+</article>
+2. CSS – full background “tile”
+
+Zamijeni postojeći article img dio i prilagodi article:
+
+main {
+    display: grid;
+    grid-template-columns: 1fr; /* sve jedna ispod druge */
+    gap: 16px;
+    padding: 20px 40px;
+}
+
+article {
+    position: relative;
+    height: 400px; /* možeš mijenjati */
+    border-radius: 15px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 20px;
+    color: white;
+}
+
+/* tamni overlay da tekst bude čitljiv */
+article::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+}
+
+article h1,
+article p {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+article h1 {
+    font-size: 24px;
+}
+
+article p {
+    color: #ddd;
+}
+//////////////////////////////////////////////

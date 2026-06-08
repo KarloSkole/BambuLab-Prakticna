@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Narudžba</title>
+        <link rel="icon" type="image/x-icon" href="slike/bambulab-icon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="stil3.css" type="text/css">
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="index.html"><img src="slike/bambulab-logo.png"></a>
+                <ul>
+                    <li><a href="index.html">Početna</a></li>
+                    <li><a href="proizvodi.html">Proizvodi</a></li>
+                    <li><a href="filament.html">Filament</a></li>
+                    <li><a href="softver.html">Softver</a></li>
+                    <li><a href="narudzba.html">Narudžba</a></li>
+                </ul>
+            </nav>
+            <main>
+                <form>
+                    <fieldset>
+                        <label>Odabir proizvoda:</label>
+                        <select name="printer" id="printer-select" required>
+                            <option value="">Odaberite proizvod</option>
+                            <optgroup label="Printeri">
+                                <option value="a1mini">Bambu Lab A1 mini od €189.00</option>
+                                <option value="h2c">Bambu Lab H2C od €2,249.00</option>
+                                <option value="p1s">Bambu Lab P1S od €389.00</option>
+                                <option value="h2dpro">Bambu Lab H2D Pro od €2,249.00</option>
+                                <option value="a1">Bambu Lab A1 od €369.00</option>
+                                <option value="x2d">Bambu Lab X2D od €849.00</option>
+                                <option value="x1e">Bambu Lab X1E od €2,249.00</option>
+                                <option value="h2s">Bambu Lab H2S od €1,149.00</option>
+                            </optgroup>
+                            <optgroup label="Filament i dodaci">
+                                <option value="pocetnicki">Osnovni početnički klasični paket €63.99</option>
+                                <option value="kalem">Višekratni plastični kalem od €13.99</option>
+                                <option value="cmyk">CMYK paket od €63.99</option>
+                                <option value="ams2pro">Bambu Lab AMS 2 Pro od €289.00</option>
+                            </optgroup>
+                        </select>
+                        <br>
+                        <legend>Unos osobnih podataka</legend>
+                        <label>Ime:</label>
+                        <input type="text" name="ime" placeholder="npr. Karlo" required>
+                        <br>
+                        <label>Prezime:</label>
+                        <input type="text" name="prezime" placeholder="npr. Piljek" required>
+                        <br>
+                        <label>Godina rođenja:</label>
+                        <input type="number" name="godine" placeholder="npr. 1967" min="1900" max="2026" required>
+                        <br>
+                        <label>E-pošta:</label>
+                        <input type="email" name="email" placeholder="npr. primjer@gmail.com" required>
+                        <br>
+                        <label>Telefon:</label>
+                        <input type="tel" name="telefon" placeholder="093 1223 123">
+                        <br>
+                        <label>Dostavljač:</label>
+                        <div class="radio-group">
+                            <input type="radio" name="dostavljac" value="dpd" id="dpd">
+                            <label for="dpd">DPD</label>
+                            <input type="radio" name="dostavljac" value="hp" id="hp">
+                            <label for="hp">HP</label>
+                            <input type="radio" name="dostavljac" value="dhl" id="dhl">
+                            <label for="dhl">DHL</label>
+                        </div>
+                        <br>
+                        <label>Način plaćanja:</label>
+                        <div class="radio-group">
+                            <input type="radio" name="nacin_placanja" value="kartica" id="kartica">
+                            <label for="kartica">Kartica</label>
+                            <input type="radio" name="nacin_placanja" value="pouzecem" id="pouzecem">
+                            <label for="pouzecem">Plaćanje pouzećem</label>
+                        </div>
+                        <br>
+                        <input type="submit" value="Naruči...">
+                    </fieldset>
+                </form>
+            </main>
+            <footer>
+                <small>Karlo Piljek &copy; 2026.</small>
+            </footer>
+        </div>
+    </body>
+</html>
